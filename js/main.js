@@ -1,4 +1,20 @@
+//Le navigateur nous montrera les erreurs de notre code mais ne les corrigera pas
 'use strict';
+
+//Récupérer la température celcius que rentre l'utilisateur en convertissant
+// la valeur en nombre avec Number
+let celcius = Number(prompt('Température en celcius : '));
+//Nan = Not a number
+if (isNaN(celcius)) {
+    alert('Entrez un nombre !');
+}
+else {
+    let fahrenheit = celcius * 9 / 5 + 32;
+    //alert(celcius + '°C' +' '+ ' = ' + fahrenheit + '°F');
+    //évite de devoir concaténer
+    alert(`${celcius} °C = ${fahrenheit} °F`);
+}
+
 // alert('Bonjour le monde !');
 let nom = 'Shannon';
 console.log('Salut',nom);
@@ -38,6 +54,11 @@ const inputCommentaire = document.querySelector('#commentaire');
 form.addEventListener('submit', function ajouterCommentaire(event){
     //stop l'envoi du formulaire
     event.preventDefault();
+    //Si commentaire vide, avertir utilisateur
+    if (inputCommentaire.value === ""){
+        alert('Commenaire vide !');
+        return; //stoppe l'événement
+    }
     //ajoute le contenu du champ commentaire
     olCommentaires.innerHTML += '<li>'+ inputCommentaire.value +'</li>';
     //vide le contenu du champ commentaire
